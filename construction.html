@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Under Construction • mendye.com</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #111;
+      color: #fff;
+      font-family: 'Arial Black', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,193,7,0.1) 35px, rgba(255,193,7,0.1) 70px);
+    }
+
+    .warning {
+      font-size: 9rem;
+      color: #ffc107;
+      animation: blink 1.5s infinite;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 5rem;
+      margin: 20px 0;
+      text-shadow: 0 0 20px #ffc107;
+    }
+
+    .digging {
+      font-size: 10rem;
+      margin: 40px 0;
+    }
+
+    .text {
+      font-size: 2rem;
+      max-width: 700px;
+      margin: 30px auto;
+      line-height: 1.6;
+    }
+
+    .back {
+      margin-top: 50px;
+      padding: 20px 50px;
+      background: #ffc107;
+      color: #000;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      transition: 0.3s;
+    }
+
+    .back:hover {
+      transform: scale(1.1);
+      background: #fff;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0.4; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="warning">WARNING</div>
+  <h1>UNDER CONSTRUCTION</h1>
+  <div class="digging">Construction Worker Construction Truck</div>
+  <div class="text">
+    This part of the site is still being built.<br>
+    Amazing things are happening behind the scenes!
+  </div>
+
+  <a href="/" class="back">Back to home</a>
+
+</body>
+</html>
