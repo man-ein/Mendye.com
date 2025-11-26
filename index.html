@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Site - Under Construction</title>
   <style>
-    /* Full-screen centered layout */
     body {
       margin: 0;
       height: 100vh;
@@ -13,18 +12,16 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #1e3c72, #2a5298); /* fallback */
-      background: linear-gradient(135deg, #0f5132, #198754, #157347); /* nice green gradient */
+      background: linear-gradient(135deg, #0f5132, #198754, #157347);
       font-family: 'Segoe UI', Arial, sans-serif;
       color: white;
       overflow: hidden;
     }
 
-    /* Big welcoming circle */
     .circle {
       width: 250px;
       height: 250px;
-      background: radial-gradient(circle, #ffeb3b, #fbc02d, #f9a825); /* sunny yellow */
+      background: radial-gradient(circle, #ffeb3b, #fbc02d, #f9a825);
       border-radius: 50%;
       display: flex;
       justify-content: center;
@@ -43,7 +40,6 @@
       100% { transform: scale(1); }
     }
 
-    /* Buttons styling */
     .btn {
       padding: 16px 32px;
       margin: 12px;
@@ -57,6 +53,9 @@
       transition: all 0.3s ease;
       box-shadow: 0 6px 15px rgba(0,0,0,0.3);
       min-width: 300px;
+      text-decoration: none;           /* important for <a> tags */
+      display: inline-block;
+      text-align: center;
     }
 
     .btn:hover {
@@ -66,34 +65,21 @@
       box-shadow: 0 12px 25px rgba(0,0,0,0.4);
     }
 
-    .btn:active {
-      transform: translateY(0);
-    }
-
-    h2 {
-      margin: 10px 0;
-      font-size: 28px;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-    }
-
-    .small {
-      font-size: 18px;
-      opacity: 0.9;
-    }
+    h2 { margin: 10px 0; font-size: 28px; text-shadow: 1px 1px 4px rgba(0,0,0,0.6); }
+    .small { font-size: 18px; opacity: 0.9; }
   </style>
 </head>
 <body>
 
-  <!-- Big yellow circle with welcome text -->
-  <div class="circle">
-    Welcome!
-  </div>
+  <div class="circle">Welcome!</div>
 
   <h2>Welcome to my site!</h2>
-  <p class="small">This site is under construction 🚧</p>
+  <p class="small">This site is under construction</p>
 
-  <!-- Buttons centered -->
-  <button class="btn">Welcome to my site!</button>
+  <!-- First button now links to welcome.html -->
+  <a href="welcome.html" class="btn">Welcome to my site!</a>
+
+  <!-- Second button stays as a normal button (or you can link it later) -->
   <button class="btn">This Site is under construction</button>
 
 </body>
