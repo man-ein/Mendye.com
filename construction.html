@@ -19,11 +19,10 @@
       overflow: hidden;
     }
 
-    /* Big pulsing yellow circle */
     .circle {
       width: 350px;
       height: 350px;
-      background: radial-gradient(circle, #e717ee, #e717ee, #e717ee);
+      background: radial-gradient(circle, #29a3e9, #7fd0ff, #7fd0ff);
       border-radius: 50%;
       display: flex;
       flex-direction: column;
@@ -31,7 +30,11 @@
       align-items: center;
       margin-bottom: 50px;
       box-shadow: 0 15px 50px rgba(0,0,0,0.6);
-      animation: pulse 3.5s infinite;
+
+      /* First: big entrance once | Then: gentle pulse forever */
+      animation:
+        popIn 1.4s ease-out forwards,
+        gentlePulse 4s ease-in-out 1.6s infinite;
     }
 
     .emoji-big {
@@ -78,10 +81,16 @@
       box-shadow: 0 25px 60px rgba(0,0,0,0.6);
     }
 
-    @keyframes pulse {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.08); }
-      100% { transform: scale(1); }
+    /* One-time dramatic entrance */
+    @keyframes popIn {
+      0%   { transform: scale(0.1); opacity: 0; }
+      100% { transform: scale(1); opacity: .90; }
+    }
+
+    /* Gentle breathing forever after */
+    @keyframes gentlePulse {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.40); }
     }
   </style>
 </head>
