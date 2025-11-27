@@ -5,161 +5,148 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculators • mendye.com</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #77a7dd, #284beb, #2b7be4);
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:'Segoe UI',Arial,sans-serif;
+      background:linear-gradient(135deg,#77a7dd,#284beb,#2b7be4);
+      color:white;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+    header{
+      background:rgba(0,0,0,0.4);padding:20px 40px;backdrop-filter:blur(10px);
+      position:fixed;top:0;left:0;right:0;z-index:100;
+    }
+    .header-content{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+    .logo{font-size:28px;font-weight:bold;color:#ffeb3b;text-decoration:none;text-shadow:0 0 10px rgba(255,235,59,0.5)}
+    nav a{color:white;text-decoration:none;margin-left:30px;font-weight:500}
+    nav a:hover{color:#ffeb3b}
+
+    main{
+      flex:1;
+      padding:140px 40px 100px;
+      max-width:1300px;
+      margin:0 auto;
+      width:100%;
+    }
+    h1{
+      font-size:56px;
+      text-align:center;
+      margin-bottom:70px;
+      text-shadow:0 0 30px rgba(0,0,0,0.4);
     }
 
-    header {
-      background: rgba(0, 0, 0, 0.4);
-      padding: 20px 40px;
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .header-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-      text-decoration: none;
-      color: #ffeb3b;
-      text-shadow: 0 0 10px rgba(255,235,59,0.5);
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 30px;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #ffeb3b; }
-
-    main {
-      flex: 1;
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    h1 {
-      text-align: center;
-      font-size: 56px;
-      margin-bottom: 60px;
-      text-shadow: 0 0 20px rgba(0,0,0,0.4);
+    /* 3 CARDS PER ROW - PERFECT SPACING */
+    .calc-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:40px;
+      max-width:1200px;
+      margin:0 auto;
     }
 
-    .calc-grid {
-      display: grid;
-      gap: 32px;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    .calc-card{
+      background:rgba(255,255,255,0.15);
+      backdrop-filter:blur(20px);
+      border-radius:28px;
+      padding:45px 30px;
+      text-align:center;
+      border:2px solid rgba(255,255,255,0.1);
+      box-shadow:0 20px 50px rgba(0,0,0,0.4);
+      transition:all 0.5s ease;
+    }
+    .calc-card:hover{
+      transform:translateY(-20px);
+      background:#ffeb3b;
+      color:#0f5132;
+      box-shadow:0 40px 90px rgba(255,235,59,0.5);
+      border-color:#ffeb3b;
+    }
+    .calc-card .emoji{
+      font-size:78px;
+      margin-bottom:20px;
+    }
+    .calc-card h3{
+      font-size:27px;
+      font-weight:700;
+      margin:16px 0 14px;
+    }
+    .calc-card p{
+      font-size:18px;
+      opacity:0.9;
+      margin-bottom:30px;
+      line-height:1.6;
+    }
+    .calc-btn{
+      padding:16px 50px;
+      background:#ffeb3b;
+      color:#0f5132;
+      font-weight:bold;
+      font-size:19px;
+      text-decoration:none;
+      border-radius:60px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.4);
+      transition:all .4s;
+      display:inline-block;
+    }
+    .calc-card:hover .calc-btn{
+      background:white;
+      transform:scale(1.1);
     }
 
-    .calc-card {
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(12px);
-      border-radius: 24px;
-      padding: 40px 20px;
-      text-align: center;
-      transition: all 0.4s ease;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    .back{
+      text-align:center;
+      margin:100px auto 0;
     }
-    .calc-card:hover {
-      transform: translateY(-16px);
-      background: rgba(255,235,59,0.15);
-      box-shadow: 0 35px 80px rgba(255,235,59,0.3);
-      border-color: #ffeb3b;
+    .back a{
+      padding:18px 50px;
+      background:#ffeb3b;
+      color:#0f5132;
+      font-size:22px;
+      font-weight:bold;
+      text-decoration:none;
+      border-radius:60px;
+      box-shadow:0 12px 40px rgba(0,0,0,0.5);
+      transition:all .4s;
+      display:inline-block;
     }
-
-    .calc-card .emoji {
-      font-size: 68px;
-      margin-bottom: 16px;
-    }
-
-    /* FIXED: Titles now always fit perfectly */
-    .calc-card h3 {
-      font-size: 22px;           /* smaller & perfect */
-      font-weight: 600;
-      margin: 14px 8px;
-      color: #ffeb3b;
-      line-height: 1.35;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      hyphens: auto;
-      min-height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 10px;
+    .back a:hover{
+      transform:translateY(-10px) scale(1.08);
+      background:white;
     }
 
-    .calc-card p {
-      font-size: 17px;
-      opacity: 0.92;
-      margin-bottom: 26px;
-      line-height: 1.5;
-      padding: 0 10px;
+    footer{
+      background:rgba(0,0,0,0.6);
+      padding:40px 20px;
+      backdrop-filter:blur(10px);
+      text-align:center;
+    }
+    .footer-links a{
+      color:#ffeb3b;
+      margin:0 20px;
+      text-decoration:none;
+      font-weight:500;
+    }
+    .footer-links a:hover{
+      text-decoration:underline;
+      color:white;
+    }
+    .copyright{
+      margin-top:12px;
+      opacity:0.8;
+      font-size:14px;
     }
 
-    .calc-btn {
-      padding: 16px 40px;
-      background: #ffeb3b;
-      color: #0f5132;
-      font-weight: bold;
-      font-size: 19px;
-      text-decoration: none;
-      border-radius: 50px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      transition: all 0.4s;
-      display: inline-block;
+    /* RESPONSIVE: 2 on tablet, 1 on mobile */
+    @media(max-width:1024px){
+      .calc-grid{grid-template-columns:repeat(2,1fr); gap:35px}
     }
-    .calc-btn:hover {
-      background: white;
-      transform: translateY(-6px);
-    }
-
-    .back-home a {
-      margin: 80px auto 0;
-      padding: 18px 50px;
-      background: #ffeb3b;
-      color: #0f5132;
-      font-size: 22px;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 60px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-      transition: all 0.4s;
-      display: inline-block;
-    }
-    .back-home a:hover {
-      transform: translateY(-10px) scale(1.08);
-      background: white;
-    }
-
-    footer {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 40px 20px;
-      backdrop-filter: blur(10px);
-      text-align: center;
-    }
-    .footer-links a { color: #ffeb3b; text-decoration: none; margin: 0 20px; font-weight: 500; }
-    .footer-links a:hover { text-decoration: underline; color: white; }
-    .copyright { margin-top: 12px; opacity: 0.8; font-size: 14px; }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 44px; }
-      .calc-card h3 { font-size: 21px; }
+    @media(max-width:640px){
+      .calc-grid{grid-template-columns:1fr; gap:30px}
+      h1{font-size:44px; margin-bottom:50px}
+      main{padding:130px 20px 80px}
+      .calc-card .emoji{font-size:65px}
     }
   </style>
 </head>
@@ -170,76 +157,61 @@
       <a href="/" class="logo">mendye.com</a>
       <nav>
         <a href="/">Home</a>
-        <a href="/about-us">About Us</a>
-        <a href="/contact-us">Contact Us</a>
         <a href="/tools">Tools</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <h1>Calculators</h1>
+    <h1>All Calculators</h1>
 
     <div class="calc-grid">
-      <div class="calc-card">
+
+      <div class="calc-card" onclick="location.href='/tools/calculators/regular-calculator'">
+        <div class="emoji">Calculator</div>
+        <h3>Regular Calculator</h3>
+        <p>Basic math operations</p>
+        <a href="/tools/calculators/regular-calculator" class="calc-btn">Open</a>
+      </div>
+
+      <div class="calc-card" onclick="location.href='/tools/calculators/percentage-calculator'">
         <div class="emoji">Percentage</div>
         <h3>Percentage Calculator</h3>
-        <p>What is X% of Y, percentage change, and more</p>
-        <a href="/tools/calculators/percentage_calculator/" class="calc-btn">Open Calculator</a>
+        <p>X% of Y, increase, discount</p>
+        <a href="/tools/calculators/percentage-calculator" class="calc-btn">Open</a>
       </div>
 
-      <div class="calc-card">
-        <div class="emoji">House</div>
-        <h3>Mortgage Calculator</h3>
-        <p>Monthly payments, total interest, affordability</p>
-        <a href="/tools/calculators/mortgage_calculator/" class="calc-btn">Open Calculator</a>
-      </div>
-
-      <div class="calc-card">
-        <div class="emoji">Split Bill</div>
-        <h3>Interest Split Calculator</h3>
-        <p>Split interest fairly between multiple people</p>
-        <a href="/tools/calculators/interest_split_calculator/" class="calc-btn">Open Calculator</a>
-      </div>
-
-      <!-- Rest of your calculators... -->
-      <div class="calc-card">
-        <div class="emoji">Loan</div>
-        <h3>Loan Calculator</h3>
-        <p>Monthly payments and total repayment</p>
-        <a href="/tools/calculators/loan_calculator/" class="calc-btn">Open Calculator</a>
-      </div>
-
-      <div class="calc-card">
+      <div class="calc-card" onclick="location.href='/tools/calculators/tip-calculator'">
         <div class="emoji">Tip</div>
         <h3>Tip Calculator</h3>
-        <p>Split the bill and calculate perfect tips</p>
-        <a href="/tools/calculators/tip_calculator/" class="calc-btn">Open Calculator</a>
+        <p>Split bills & add tip easily</p>
+        <a href="/tools/calculators/tip-calculator" class="calc-btn">Open</a>
       </div>
 
-      <div class="calc-card">
+      <div class="calc-card" onclick="location.href='/tools/calculators/bmi-calculator'">
         <div class="emoji">BMI</div>
         <h3>BMI Calculator</h3>
-        <p>Body Mass Index with health categories</p>
-        <a href="/tools/calculators/bmi_calculator/" class="calc-btn">Open Calculator</a>
+        <p>Body Mass Index & category</p>
+        <a href="/tools/calculators/bmi-calculator" class="calc-btn">Open</a>
       </div>
 
-      <div class="calc-card">
-        <div class="emoji">Piggy Bank</div>
-        <h3>Savings Calculator</h3>
-        <p>See how your money grows over time</p>
-        <a href="/tools/calculators/savings_calculator/" class="calc-btn">Open Calculator</a>
+      <div class="calc-card" onclick="location.href='/tools/calculators/loan-calculator'">
+        <div class="emoji">Loan</div>
+        <h3>Loan Calculator</h3>
+        <p>Monthly payments & interest</p>
+        <a href="/tools/calculators/loan-calculator" class="calc-btn">Open</a>
       </div>
 
-      <div class="calc-card">
-        <div class="emoji">Discount</div>
-        <h3>Discount Calculator</h3>
-        <p>How much you save on sales</p>
-        <a href="/tools/calculators/discount_calculator/" class="calc-btn">Open Calculator</a>
+      <div class="calc-card" onclick="location.href='/tools/calculators/mortgage-calculator'">
+        <div class="emoji">House</div>
+        <h3>Mortgage Calculator</h3>
+        <p>Home loan payments & total cost</p>
+        <a href="/tools/calculators/mortgage-calculator" class="calc-btn">Open</a>
       </div>
+
     </div>
 
-    <div class="back-home">
+    <div class="back">
       <a href="/tools">Back to Tools</a>
     </div>
   </main>
