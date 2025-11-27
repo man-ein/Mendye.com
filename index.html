@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>mendye.com</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:'Segoe UI',Arial,sans-serif;
+      /* blue glass gradient background from second file */
+      background:linear-gradient(135deg,#77a7dd,#284beb,#2b7be4);
+      color:white;
+      line-height:1.8;
+      overflow-x:hidden;
+      min-height:100vh;
+      display:block;
+    }
+
+    /* Header - glass */
+    header{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      background:rgba(0,0,0,0.4);
+      backdrop-filter:blur(10px);
+      padding:22px 40px;
+    }
+    .header-content{
+      max-width:1300px;margin:0 auto;
+      display:flex;justify-content:space-between;align-items:center;
+    }
+    .logo{
+      font-size:36px;font-weight:900;color:#ffeb3b;
+      text-decoration:none;letter-spacing:1px;
+      text-shadow:0 0 12px rgba(255,235,59,0.6);
+    }
+    nav a{
+      color:white;margin-left:30px;font-weight:600;
+      text-decoration:none;transition:.3s;font-size:17px;
+    }
+    nav a:hover{color:#ffeb3b}
+
+    /* HERO */
+    .hero{
+      height:100vh;display:flex;flex-direction:column;
+      justify-content:center;align-items:center;text-align:center;
+      padding:0 20px;
+      /* subtle layering but keep simple to match second file */
+    }
+    .hero h1{
+      font-size:88px;font-weight:900;
+      color:#ffffff;
+      margin-bottom:28px;letter-spacing:-1px;
+      text-shadow:0 0 30px rgba(0,0,0,0.35);
+    }
+    .hero p{
+      font-size:28px;max-width:840px;opacity:0.95;margin-bottom:50px;
+    }
+    .btn{
+      padding:22px 70px;background:#ffeb3b;color:#0f5132;
+      font-size:26px;font-weight:900;border-radius:70px;
+      cursor:pointer;text-decoration:none;
+      box-shadow:0 25px 60px rgba(0,0,0,0.5);
+      transition:all .4s;letter-spacing:1px;display:inline-block;
+    }
+    .btn:hover{
+      transform:translateY(-10px) scale(1.08);background:white;
+    }
+
+    /* Philosophy section - glass card background */
+    .philosophy{
+      padding:160px 40px;text-align:center;
+      background:rgba(0,0,0,0.18);
+      backdrop-filter:blur(8px);
+    }
+    .philosophy h2{
+      font-size:56px;color:#ffeb3b;margin-bottom:40px;
+      text-shadow:0 0 18px rgba(255,235,59,0.4);
+    }
+    .philosophy p{font-size:23px;max-width:900px;margin:0 auto 30px;opacity:0.95;}
+
+    /* Values grid - card style like second file */
+    .values{
+      padding:120px 40px;
+    }
+    .values-grid{
+      max-width:1200px;margin:0 auto;display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px;
+    }
+    .value-card{
+      text-align:center;padding:40px 30px;
+      background:rgba(255,255,255,0.12);
+      backdrop-filter:blur(18px);
+      border-radius:25px;
+      border:2px solid rgba(255,255,255,0.08);
+      box-shadow:0 20px 50px rgba(0,0,0,0.36);
+      transition:all .45s;
+      cursor:default;
+    }
+    .value-card:hover{
+      transform:translateY(-15px) scale(1.02);
+      background:#ffeb3b;color:#0f5132;
+      box-shadow:0 30px 70px rgba(255,235,59,0.45);
+      border-color:rgba(255,235,59,0.9);
+    }
+    .value-card h3{font-size:28px;margin-bottom:14px;color:inherit;}
+    .value-card p{font-size:18px;opacity:0.95;margin:0 10px 8px;}
+
+    /* Final CTA */
+    .final-cta{
+      padding:140px 40px;text-align:center;
+      background:rgba(0,0,0,0.18);
+      backdrop-filter:blur(8px);
+    }
+    .final-cta h2{font-size:64px;color:#ffeb3b;margin-bottom:30px;text-shadow:0 0 18px rgba(255,235,59,0.4);}
+    .final-cta p{font-size:26px;max-width:800px;margin:0 auto 50px;opacity:0.95;}
+
+    /* Footer */
+    footer{
+      padding:80px 20px 60px;text-align:center;background:transparent;
+      border-top:1px solid rgba(255,255,255,0.06);
+    }
+    .footer-links a{
+      color:#ffeb3b;margin:0 20px;text-decoration:none;
+      font-weight:600;transition:.3s;
+    }
+    .footer-links a:hover{color:white}
+    .copyright{margin-top:30px;opacity:0.9;font-size:15px;color:rgba(255,255,255,0.9);}
+
+    /* Tool-like grid (optional small variant) */
+    .tools-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+      max-width:1200px;
+      margin:40px auto 0;
+    }
+    .tool-card{
+      background:rgba(255,255,255,0.12);
+      backdrop-filter:blur(18px);
+      border-radius:25px;
+      padding:30px 24px;
+      text-align:center;
+      border:2px solid rgba(255,255,255,0.08);
+      box-shadow:0 12px 30px rgba(0,0,0,0.3);
+      transition:all 0.45s ease;
+    }
+    .tool-card:hover{
+      transform:translateY(-12px) scale(1.02);
+      background:#ffeb3b;color:#0f5132;
+      box-shadow:0 30px 60px rgba(255,235,59,0.35);
+    }
+    .tool-card h3{font-size:24px;margin-bottom:10px}
+    .tool-card p{font-size:16px;opacity:0.95;margin-bottom:16px}
+    .tool-card .btn{padding:12px 30px;background:#ffeb3b;color:#0f5132;border-radius:50px;text-decoration:none;font-weight:700}
+
+    @media(max-width:768px){
+      .hero h1{font-size:58px}
+      .hero p{font-size:22px}
+      .btn{padding:18px 50px;font-size:22px}
+      .philosophy h2,.final-cta h2{font-size:42px}
+      .philosophy,.values,.final-cta{padding:100px 20px}
+      .value-card{padding:26px 16px}
+      .logo{font-size:28px}
+      .header-content{padding:0 6px}
+      .values-grid{gap:20px}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <a href="/" class="logo">mendye.com</a>
+      <nav>
+        <a href="/tools">Tools</a>
+        <a href="/about-us">About</a>
+        <a href="/contact-us">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>mendye.com</h1>
+    <p>Free online tools that don’t waste your time.<br>No ads. No tracking. No nonsense.</p>
+    <a href="/tools" class="btn">Start Using Now</a>
+  </section>
+
+  <section class="philosophy">
+    <h2>We build tools the way they should be.</h2>
+    <p>Fast. Beautiful. Private. Actually helpful.</p>
+    <p>Every tool loads instantly, works perfectly on mobile, and never asks for your email.</p>
+    <p>Because the internet already has enough garbage — we’re here to fix that.</p>
+  </section>
+
+  <section class="values">
+    <div class="values-grid">
+      <div class="value-card"><h3>No Ads Ever</h3><p>We don’t make money from your attention.</p></div>
+      <div class="value-card"><h3>No Tracking</h3><p>Your data stays on your device. Full stop.</p></div>
+      <div class="value-card"><h3>Instant & Lightweight</h3><p>Every tool works even on slow connections.</p></div>
+      <div class="value-card"><h3>Always Free</h3><p>No paywalls. No “pro” versions. Ever.</p></div>
+      <div class="value-card"><h3>Made with Care</h3><p>Built by someone who actually uses them daily.</p></div>
+      <div class="value-card"><h3>Open & Honest</h3><p>No dark patterns. Just respect.</p></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <h2>The tools are ready.</h2>
+    <p>Stop waiting. Start using them right now — completely free.</p>
+    <a href="/tools" class="btn">Start Using Now</a>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/contact-us">Contact</a>
+      <a href="/privacy-policy">Privacy Policy</a>
+      <a href="/terms-and-conditions">Terms</a>
+    </div>
+    <div class="copyright">© 2025 mendye.com • Built by one human who cares.</div>
+  </footer>
+
+</body>
+</html>
