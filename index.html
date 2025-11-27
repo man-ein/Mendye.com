@@ -66,6 +66,47 @@
       font-size: 28px;
       opacity: 0.9;
       max-width: 800px;
+      margin-bottom: 40px;
+    }
+
+    /* ===== INFINITE SPINNING LOADER (COOL!) ===== */
+    .loader {
+      margin-top: 20px;
+    }
+    .loader svg {
+      width: 100px;
+      height: 100px;
+      animation: rotate 3s linear infinite;
+    }
+    .loader circle {
+      fill: none;
+      stroke: #ffeb3b;
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 250;
+      stroke-dashoffset: 50;
+      transform-origin: center;
+      animation: dash 2s ease-in-out infinite;
+    }
+    .loader-text {
+      margin-top: 20px;
+      font-size: 18px;
+      opacity: 0.9;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes dash {
+      0%   { stroke-dashoffset: 50; }
+      50%  { stroke-dashoffset: 250; }
+      100% { stroke-dashoffset: 50; }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50%      { opacity: 1; }
     }
 
     /* ===== FOOTER ===== */
@@ -103,38 +144,48 @@
       .header-content { flex-direction: column; gap: 15px; }
       nav a { margin: 0 15px; }
       .welcome { font-size: 42px; }
+      .tagline { font-size: 24px; }
+      .loader svg { width: 80px; height: 80px; }
       .footer-links a { display: block; margin: 10px 0; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER - Only Home, About Us, Contact Us -->
+  <!-- HEADER -->
   <header>
     <div class="header-content">
       <a href="/" class="logo">mendye.com</a>
       <nav>
         <a href="/">Home</a>
-        <a href="about-us">About Us</a>
-        <a href="contact-us">Contact Us</a>
-        <a href="tools">Tools</a>
+        <a href="/about-us">About Us</a>
+        <a href="/contact-us">Contact Us</a>
+        <a href="/tools">Tools</a>
       </nav>
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
+  <!-- MAIN CONTENT WITH COOL SPINNER -->
   <main>
     <h1 class="welcome">Welcome to mendye.com</h1>
     <p class="tagline">Something amazing is coming very soon...</p>
+
+    <!-- INFINITE SPINNING LOADER -->
+    <div class="loader">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="40" />
+      </svg>
+      <div class="loader-text">Loading magic...</div>
+    </div>
   </main>
 
-  <!-- FOOTER - Legal links stay here -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-content">
       <div class="footer-links">
-        <a href="contact-us">Contact Us</a>
-        <a href="terms-and-conditions">Terms & Conditions</a>
-        <a href="privacy-policy">Privacy Policy</a>
+        <a href="/contact-us">Contact Us</a>
+        <a href="/terms-and-conditions">Terms & Conditions</a>
+        <a href="/privacy-policy">Privacy Policy</a>
       </div>
       <div class="copyright">
         © 2025 mendye.com • All rights reserved.
@@ -143,7 +194,4 @@
   </footer>
 
 </body>
-
 </html>
-
-
